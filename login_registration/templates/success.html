@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename='style.css') }}">
+        <title>Success page!</title>
+    </head>
+    <body>
+        <div id="wrapper">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <p>Welcome! {{ session['first_name'] }} {{ session['last_name'] }}</p>
+            <p>User since {{ session ['registered_at'] }}</p>
+            <a href="/logout">Log Out</a>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename='style_main.css') }}">
+        <title>Wall</title>
+    </head>
+    <body>
+        <div id="wrapper">
+            <header>
+                <h1>CodingDojo Wall</h1>
+                <p>Welcome {{ session['first_name'] }}
+                    <a href="/logout">Log Out</a>
+                </p>
+            </header>
+            <!-- prints any error messages (submit button is clicked without a text in the msg box) -->
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <form action="/post_message" method='post'>
+                <h3>Post a message</h3>
+                <textarea name="message" cols="120" rows="8"></textarea>
+                <input type="submit" value="Post a Message">
+            </form>
+            <main>
+            <!-- prints the messages from all users -->
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="message">
+                        <h4> {{ message['first_name'] }} {{ message['last_name'] }} - {{ message['created_at'] }}</h4>
+                        <p>{{ message['message'] }}</p>
+                        <!-- adding all comments for the above message -->
+                        <div class="comment">
+                            {% for comment in comments %}
+                                {% if message['id'] == comment['message_id'] %}
+                                    <h5> {{ comment['first_name'] }} {{ comment['last_name'] }} - {{ comment['created_at'] }}</h5>
+                                    <p>{{ comment['comment'] }}</p>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <form action="/post_comment" method="post">
+                            <h5>Post a comment</h5>
+                            <textarea name="comment" cols="100" rows="3"></textarea>
+                            <input type="submit" value="Post a comment">
+                            <input type="hidden" name='message_id' value='{{message["id"]}}'>
+                        </form>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            </main>
+        </div>
+    </body>
+</html>

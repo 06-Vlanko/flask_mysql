@@ -1,0 +1,25 @@
+
+#wrapper {
+    width: 1200px;
+    background-color: lightgray;
+}
+form {
+    display: inline-block;
+    vertical-align: top;
+    width: 550px;
+    padding: 20px;
+    border: 2px dotted darkgrey;
+}
+label {
+    display: inline-block;
+    width: 180px;
+}
+input[type=text] {
+    width: 280px
+}
+input[type=submit] {
+    padding: 5px;
+}
+input[type=password] {
+    width: 280px;
+}

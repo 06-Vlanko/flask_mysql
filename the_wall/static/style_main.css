@@ -1,0 +1,39 @@
+
+header {
+    padding: 10px;
+    border-bottom: 2px solid black;
+}
+header h1, p, a {
+    display: inline-block;
+}
+header h1 {
+    margin-right: 500px;
+}
+header a {
+    margin-left: 50px;
+}
+input[type='submit'] {
+    display: block;
+}
+.message h4 {
+    margin: 5px 0px;
+}
+.message p {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 20px;
+}
+.message h5 {
+    font-size: 15px;
+    margin: 5px 0px;
+}
+.message div {
+    margin-left: 20px;
+}
+.message form {
+    margin-left: 40px;
+}
+/* .comment {
+    margin-left: 20px;
+} */

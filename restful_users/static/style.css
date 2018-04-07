@@ -1,0 +1,11 @@
+
+th, td {
+    text-align: left;
+    padding: 5px 20px;
+}
+th {
+    background-color: grey;
+}
+tr:even {
+    background-color: lightgray;
+}
